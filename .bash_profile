@@ -10,6 +10,15 @@ function nmap-ping-sweep() {
 	nmap -sn $@ | grep -F "Nmap scan report for" | cut -d' ' -f5
 }
 
+# Scan for web services
+function nmap-webscan() {
+        if [[ $# -lt 1 ]]; then
+                echo '!!!  No target specified'
+                return
+        fi
+        sudo nmap $@ -p 80,8000,8080,443,8443,3000 -sV --script http-enum,http-vhosts
+}
+
 # Intense TCP port scan - all ports w/ version detection
 function nmap-tcp-intense() {
 	if [[ $# -lt 1 ]]; then
