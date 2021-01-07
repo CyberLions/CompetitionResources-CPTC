@@ -1,5 +1,12 @@
 # .bash_profile
 
+# Setup environment variables and stuff
+export PS1="[ \[$(tput sgr0)\]\[\033[38;5;2m\]\D{%F %T}\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;1m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;6m\]\$PWD\[$(tput sgr0)\]\[\033[38;5;15m\] ]\n\[$(tput sgr0)\]\[\033[38;5;3m\]\\$>\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH
+
+
 # CPTC Functions
 # Print list of all hosts in target which respond to ICMP ping requests
 function nmap-ping-sweep() { 
@@ -56,13 +63,7 @@ function nmap-udp-intense-scripts() {
 }
 
 
-# Get the aliases and functions
+# Run bashrc too
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+	source ~/.bashrc
 fi
-
-# User specific environment and startup programs
-
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
-export PATH
